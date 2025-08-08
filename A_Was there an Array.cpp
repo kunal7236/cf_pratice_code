@@ -1,22 +1,21 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <cstdio>
 
-int main() {
-    int t;
-    cin >> t;
-    for (int i = 0; i < t; ++i) {
-        int n;
-        cin >> n;
-        string s, combined;
-        for (int j = 0; j < n; ++j) {
-            cin >> s;
-            combined += s;
+int main(){
+
+    long t; scanf("%ld", &t);
+    while(t--){
+        long n; scanf("%ld", &n);
+        long pprev(0), prev(0);
+        bool possible(true);
+        for(long p = 2; p < n; p++){
+            long x; scanf("%ld", &x);
+            if(pprev && !prev && x){possible = false;}
+            pprev = prev;
+            prev = x;
         }
-        if (combined.find("101") != string::npos) {
-            cout << "NO" << endl;
-        } else {
-            cout << "YES" << endl;
-        }
+
+        puts(possible ? "YES" : "NO");
+
     }
-    return 0;
+
 }
